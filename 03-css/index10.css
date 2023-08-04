@@ -1,0 +1,45 @@
+.d-inline1{
+    display: inline;
+    background-color: blue;
+}
+.d-inline2{
+    display: inline;
+    background-color:red;
+}
+.d-block1{
+    display: block;
+    background-color: blue;
+    width : 500px;
+}
+
+.d-block2{
+    display: block;
+    background-color: red;
+    width: 400px;
+}
+/* 블록은 항상 개행처리가 된다 */
+
+.d-inline-block1{
+    display:inline-block;
+    background-color: blue;
+}
+.d-inline-block2{
+    display:inline-block;
+    background-color: red;
+    width: 200px;
+    height:300px;
+    /* margin-top: 10px; */
+    margin: 20px 40px 20px 40px;
+    /* =margin: 20px 40px; */
+}
+.d-none{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+}
+
+.box {
+    visibility: visible;
+    background-color:blue;
+
+}

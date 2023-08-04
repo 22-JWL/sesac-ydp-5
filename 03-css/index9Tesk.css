@@ -1,0 +1,29 @@
+div{
+    width: 10%;
+    height: 10%;
+
+    position: absolute;
+    top: 200px;
+    left: 200px;
+
+    transform: skewY(30deg);
+    
+}
+
+.beach1{
+    top: 650px;
+    left: 50px;
+
+    z-index: 10;
+}
+.beach2{
+    top: 500px;
+    left: 700px;
+    z-index: 9;
+
+}
+.beach3{
+    top: 400px;
+    left: 1400px;
+    
+}

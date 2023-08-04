@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form&input Tag</title>
+</head>
+<body>
+    <h1>폼 태그 종류에 대해 알아보자</h1>
+    <!-- form tag : 사용자로부터 입력받는 요소(input, select, textarea)들을 감싸는 태그
+    form tag의 attribute action, method가 있는데 "서버"와 연관된 내용-> 추후 소개
+    화면에 드러나지 않는 추상적인 태그 (양식)-->
+    <form>
+        <!-- 모든 input의 타입에는 "name" attribute를 가질 수 있음("서버") -->
+        입력해요<input type="text">
+        입력못해요<input type="text" disabled>
+        <br>
+
+        <!-- 웹 접근성(장애인들이나 사용자가 인터넷을 이용하기 좋은 한경)에 적합
+        input은 인라인 함수 -->
+        <label for="user-email">e-mail</label>
+        <input type="email" id="user-email" placeholder="ex@email.com">
+        <br>
+        <!-- cols=가로 rows=세로 -->
+        <textarea name="" id="" cols="30" rows="3" placeholder="문의사항을 입력해주세요"></textarea>
+        <br>
+        <input type="color">
+        <input type="range" name="" id="">
+        <input type="file" name="" id="">
+        <input type="number" name="" id="">
+        <input type="date" name="" id="">
+        <input type="datetime-local" name="" id="">
+
+        <br>
+<!-- checkbox, radio는 같은 name 속성값을 부여해 카테고리화를 해주어야 함 -->
+        <h5>당신의 취미는?</h5>
+        <input type="checkbox" name="interest" value="tabletennis" id="" checked>탁구
+        <input type="checkbox" name="interest" value="basketball" id="">농구
+        <input type="checkbox" name="interest" id="tennis">테니스
+        <input type="checkbox" name="interest" id="swimming">수영
+
+        <h5>당신의 성별은?</h5>
+        <input type="radio" name="gender" id="" value="m" checked><label for="genderM">남자</label>
+        <input type="radio" name="gender" id="" value="f"><label for="genderF">여자</label>
+
+
+        <br>
+        <!-- 단순한 버튼 -->
+        <input type="button" value="버튼1">
+        <button type="button">버튼2</button>
+        <br>
+
+        <!-- 폼을 "제출" 버튼 -->
+        <input type="submit" value="제출1">
+        <button type="submit">제출2</button>
+
+        <br>
+        <select name="flower">
+            <!-- 어떤그룹인지 묶어서 관리하고 싶을때 -->
+            <optgroup label="4000won">    
+                <option value ="a">장미</option>
+                <option value ="b" selected>프리지아</option>
+                <option value ="c">안개꽃</option>
+            </optgroup>
+            <optgroup label="3000won">    
+                <option value ="a">목화</option>
+                <option value ="b">수선화</option>
+                <option value ="c">카네이션</option>
+            </optgroup>    
+        </select>
+    </form>
+    
+</body>
+</html>

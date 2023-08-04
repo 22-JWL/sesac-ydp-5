@@ -1,0 +1,24 @@
+.box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: aliceblue;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.my_center {
+  background-color: hotpink;
+  width: 300px;
+}
+/* bootstrap같은경우에는 인라인 요소들을 없에줘야 편집하기 편하다. */
+.my_width {
+  background-color: gold;
+}
+.w-30 {
+  width: 30%;
+}
+.my_height {
+  background-color: green;
+}

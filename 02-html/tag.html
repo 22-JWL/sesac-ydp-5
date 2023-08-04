@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- DOCTYPE html : html5 로 문서를 작성하겠다.  -->
+<html lang="en">
+    <!-- 웹크롤러에게 이 웹페이지가 어떤 언어로 이루어져 있는지 알려주기위해 lang속성 : language(en : English, ko: Korean) -->
+<head>
+    <meta charset="UTF-8">
+    <!-- 인코딩 방식 지정. 인코딩: 우리가 작성한 코드를 컴퓨터가 이용할 수 있도록 변경 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 모바일/반응형웹에서 인식할 수 있는 태그 -->
+    <title>Ethan.lee</title>
+    <!-- 문서의 제목을 의미 -->
+</head>
+<body>
+    <!-- 브라우저에서 보여주고 싶은 내용 -->
+    <!-- start tag, end tag 사이에 넣고 싶은 content를 작성 -->
+
+    <h1>Tag 종류에 대해 배워보자</h1>
+    <h2>제목2</h2>
+    <h3>제목2</h3>
+    <h4>제목2</h4>
+    <h5>제목2</h5>
+    <h6>제목2</h6>
+    <p>여기는 본문태그입니다!</p>
+    <br>
+
+    <!-- 중첩 div블록요소 span인라인요소 -->
+    <div style="background-color:red;">
+        span의 parent?
+        <span style="background-color: blue;">div의 child</span>
+    </div>
+    <!-- 수평줄 태그 -->
+    <hr>
+
+    <!-- ordered list -->
+    <h3>아이스 카페라떼 레시피</h3>
+    <ol type="1" start="4" reversed>
+        <li><strong>우유</strong>를 <em>108ml</em>컵에 넣기</li>
+        <li><b>얼음</b>을 가득 넣기</li>
+        <li> <del>에스프레소</del> 샷을넣어주면</li>
+        <li> <u>아이스 카페라떼</u> 완성</li>
+    </ol>
+
+    <!-- ordered list -->
+    <h3>아이스 카페라떼 레시피</h3>
+    <ol type="1" start="4" reversed>
+        <li><strong>우유</strong>를 <em>108ml</em>컵에 넣기</li>
+        <li><b>얼음</b>을 가득 넣기</li>
+        <li> <del>에스프레소</del> 샷을넣어주면</li>
+        <li> <u>아이스 카페라떼</u> 완성</li>
+    </ol>
+
+
+
+
+    <!-- unordered list -->
+    <h3>오늘의 할일</h3>
+    <ul type ="square">
+        <li>html 공부</li>
+        <li>운동하기</li>
+        <li>방 청소하기</li>
+    </ul>
+
+    <h3>내가 좋아하는 음식</h3>
+    <ul>
+        <li>
+            양식
+            <ul>
+                <li>수제버거</li>
+                <li>파스타</li>
+            </ul>
+        </li>
+        <li>한식
+            <ul>
+                <li>제육볶음</li>
+                <li>돈까스</li>
+            </ul>
+        </li>
+        <li>중식
+            <ul>
+                <li>초밥</li>
+                <li>우동</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h1>img & a tag</h1>
+
+<!-- alt는 이미지가 뜨기 않을때 이 이미지가 뭐였는지 알려주기 위한 속성이다
+    상대경로
+.은 무엇인가? 현재위치를 의미한다.
+..은 무엇인가? 부모위치를 의미한다. 중요!
+./img/sesac.jpg : 현재위치에서 img폴더 안의 sesac.jpg파일을 찾아라
+ 상대경로/절대경로 : 같-->
+    
+    
+    <img src="https://i.namu.wiki/i/0uubPPIF2f9mKDb2fD19gMa77g2rUpoDnQ5Ekb9iqSNea2sfq9u9eWmRUGZFMIOy77XxnSI0HrIfTBj-U-wt4Q.webp" alt="안아줘요콘">
+    
+    <img src="./img/dogMalt.jpg" alt="말티즈귀여워 +.+">
+
+    <img src="C:\Users\user\Documents\sesac-ydp-5\02-html\img\dogMalt.jpg">
+
+    <!-- a tag target attribute: 링크가 열릴 위치 지정
+    - _self(defalt): 현재탭에서 dufrl
+    - _blank : 새 탭으로 열기
+-->
+
+    <a href="http://www.naver.com" target="_blank">Naver로 이동하기</a>
+
+    <a href="https://www.google.com" title="커서를 올리면 나타남!">Google신</a>
+
+    <a href="./task.html">Cafe Alpaca
+    </a>
+</body>
+</html>

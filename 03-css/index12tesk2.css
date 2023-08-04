@@ -1,0 +1,17 @@
+.text{
+    position: absolute;
+    animation-name: text;
+    animation-iteration-count: 1;
+
+    animation-duration: 3s;
+    animation-timing-function: linear;
+}
+
+@keyframes text{
+from{
+    left: 100%;
+}
+to{
+    left: 0px;
+}
+}
