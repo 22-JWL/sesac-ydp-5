@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지 입니다.</title>
+  </head>
+  <body>
+    <section
+      style="
+        background-color: oldlace;
+        width: 300px;
+        padding-bottom: 30px;
+        text-align: right;
+        border-style: dotted;
+        border-color: red;
+        border-radius: 10%;
+      "
+    >
+      <h1 style="text-align: center">
+        환영합니다 (^^7)<br />회원가입 해주세요
+      </h1>
+      아이디:
+      <input type="text" placeholder="아이디를 입력해주세요" /><br />
+      패스워드:
+      <input type="text" placeholder="비밀번호를 입력해주세요" />
+      <div class="passwordCheck">
+        패스워드재입력:<input
+          id="passwordCheck"
+          type="password"
+          placeholder="비밀번호를 다시 입력해 주세요."
+        />
+        <div id="passwordCheckError" class="error"></div>
+      </div>
+      <div class="email">
+        이메일 인증:
+        <input id="email" type="text" placeholder="이메일을 입력해 주세요." />
+        <div id="emailError" class="error"></div>
+        <div><button>이메일전송</button></div>
+      </div>
+      <div class="email">
+        인증번호:
+        <input id="email" type="text" placeholder="이메일을 입력해 주세요." />
+        <div id="emailError" class="error"></div>
+        <div><button>제출</button></div>
+      </div>
+      <select name="fruits">
+        <option value="" selected>--- 본인인증 질문 선택 ---</option>
+        <option value="apple">내가 나온 초등학교는?</option>
+        <option value="banana">학창시절 나의 별명은?</option>
+        <option value="lemon">내가 태어난 도시는?</option>
+      </select>
+      <input type="text" placeholder="답변" /><br />
+
+      <br /><br /><input type="button" value="환영해!" />
+    </section>
+  </body>
+</html>
