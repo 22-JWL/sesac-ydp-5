@@ -16,7 +16,7 @@ class Rectangle extends Shape {
     )} 입니다.`;
   }
 }
-
+//test
 class Triangle {
   constructor(width, height) {
     this.width = width;
