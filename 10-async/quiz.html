@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>콜백지옥 예시</h1>
+
+    <script>
+      //1.
+      function changeColor() {
+        setTimeout(function () {
+          console.log('고민 끝');
+          document.body.style.backgroundColor = 'red';
+          setTimeout(function () {
+            document.body.style.backgroundColor = 'blue';
+            setTimeout(function () {
+              document.body.style.backgroundColor = 'green';
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }
+      changeColor();
+    </script>
+  </body>
+</html>

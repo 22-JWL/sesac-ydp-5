@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function changeBGC(text) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            document.body.style.background = text;
+            resolve(text);
+          }, 1000);
+        });
+      }
+
+      changeBGC('red')
+        .then((result) => {
+          result = 'green';
+          return changeBGC(result);
+        })
+        .then((result) => {
+          result = 'blue';
+          return changeBGC(result);
+        })
+        .then((result) => {
+          result = 'magenta';
+          return changeBGC(result);
+        })
+        .then((result) => {
+          result = 'teal';
+          return changeBGC(result);
+        })
+        .then((result) => {
+          result = 'yellow';
+          return changeBGC(result);
+        });
+    </script>
+  </head>
+  <body></body>
+</html>
