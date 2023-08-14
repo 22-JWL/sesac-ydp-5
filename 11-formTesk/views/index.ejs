@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="background-color: bisque"><%= title %></h1>
+    <h2>GET 요청</h2>
+    <form action="/getForm" method="get">
+      이름:<input type="text" name="name" placeholder="홍길동" />
+
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="man" />: 남자
+        <input type="radio" name="gender" value="women" />: 여자
+      </fieldset>
+      <fieldset>
+        <legend><label for="birth">생년월일</label></legend>
+        <select name="birth" id="birth">
+          <% for(let z = 2023; z >= 1980; z--) { %>
+          <option value="<%= z %>"><%= z %></option>
+          <% } %>
+        </select>
+        <select name="month" id="month">
+          <% for(let i = 1; i <= 12; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <select name="days" id="days">
+          <% for(let j = 1; j <= 31; j++) { %>
+          <option value="<%= j %>"><%= j %></option>
+          <% } %>
+        </select>
+      </fieldset>
+      <fieldset>
+        <legend><label for="hobby">관심사</label></legend>
+        <input type="checkbox" name="hobby" value="travel" />여행
+        <input type="checkbox" name="hobby" value="shoping" />쇼핑
+        <input type="checkbox" name="hobby" value="music" />음악
+      </fieldset>
+      <button>제출</button>
+    </form>
+  </body>
+</html>
