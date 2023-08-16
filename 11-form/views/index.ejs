@@ -9,15 +9,42 @@
     <h1 style="background-color: bisque"><%= title %></h1>
     <h2>GET 요청</h2>
     <form action="/getForm" method="get">
-      <input type="text" name="id" placeholder="ID" />
-      <input type="password" name="pw" placeholder="PW" />
+      <input type="text" name="id" placeholder="ID" required minlength="3" />
+      <input
+        type="password"
+        name="pw"
+        placeholder="PW"
+        required
+        minlength="4"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="EMAIL 은 필수 값"
+        required
+      />
+      <input type="number" name="grade" placeholder="NUMBER" required />
       <button>제출</button>
     </form>
 
     <h2>POST 요청</h2>
+    <!-- required 속성 : 폼 요소에 값이 반드시 들어가야하는지 여부를 결정  -->
+    <!-- pattern속성: 폼 요소에 값 입력되었을 대 그 입력된 값에 대한 검증을 의미 -->
     <form action="/postForm" method="post">
-      <input type="text" name="id" placeholder="ID" />
-      <input type="password" name="pw" placeholder="PW" />
+      <input
+        type="text"
+        name="id"
+        placeholder="ID"
+        pattern="^([a-zA-Z가-힣]){4,}$"
+        title="아이디는 대소문자, 한글 숫자로 구성된 4자 이상의 문자여야 합니다."
+      />
+      <input
+        type="password"
+        name="pw"
+        placeholder="PW"
+        pattern="^([a-z0-9]){8,12}$"
+        title="비밀번호는 영어 소문자와 숫자로 구성된  8자리 이상 12자리 이하의 문자여야 합니다."
+      />
       <button>제출</button>
     </form>
   </body>

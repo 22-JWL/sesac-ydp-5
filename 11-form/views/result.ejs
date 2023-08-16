@@ -11,9 +11,12 @@
       }
     </style>
   </head>
-  <body>
-    <h1><%= title %> 폼 결과 확인하기</h1>
-    <div><span><%= userInfo. %></span>님 환영합니다!</div>
-    <div>비밀번호는<span><%= userInfo.pw %></span>이군요!</div>
+  <h1><%=title%></h1>
+    <div><span><%= userInfo.id %></span>님 환영합니다!</div>
+    <div>비밀번호는 <span><%=userInfo.pw%></span>이군요!!</div>
+    <% if(userInfo.email && userInfo.grade){ %>
+    <div>이메일 주소는 <span><%=userInfo.email%></span>이십니다!</div>
+    <div>학년은 <span><%=userInfo.grade%></span>학년이시네요</div>
+    <%}%>
   </body>
 </html>
