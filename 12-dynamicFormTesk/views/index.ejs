@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1 style="background-color: bisque"><%= title %></h1>
+    <h2>실습1. axios get 회원가입</h2>
+    <form name="register">
+      이름:<input type="text" name="name" value="홍박사" />
+
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="man" checked />: 남자
+        <input type="radio" name="gender" value="women" />: 여자
+      </fieldset>
+      <fieldset>
+        <legend><label for="birth">생년월일</label></legend>
+        <select name="birth" id="birth">
+          <% for(let z = 2023; z >= 1980; z--) { %>
+          <option value="<%= z %>"><%= z %></option>
+          <% } %>
+        </select>
+        <select name="month" id="month">
+          <% for(let i = 1; i <= 12; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <select name="days" id="days">
+          <% for(let j = 1; j <= 31; j++) { %>
+          <option value="<%= j %>"><%= j %></option>
+          <% } %>
+        </select>
+      </fieldset>
+      <fieldset>
+        <legend><label for="hobby">관심사</label></legend>
+        <input type="checkbox" name="travel" value="travel" />여행
+        <input type="checkbox" name="shopping" value="shopping" />쇼핑
+        <input type="checkbox" name="music" value="music" />음악
+      </fieldset>
+      <button type="button" onclick="axiosGet();">제출</button>
+      <div class="result"></div>
+      <script>
+        const resultBox = document.querySelector('div.result');
+        async function axiosGet() {
+          console.log('get 함수 호출');
+
+          const form = document.forms['register'];
+          const data = {
+            name: form.name.value,
+            gender: form.gender.value,
+            birth: [form.birth.value, form.month.value, form.days.value],
+            hobby: [form.travel.value, form.shopping.value, form.music.value],
+          };
+
+          axios({
+            method: 'get', //요청방식(= form method 속성)
+            url: '/axios', //요청경로= form action 속성)
+            params: data, //서버로 보낼 데이터(query string)
+          })
+            .then(function (response) {
+              console.log(response);
+              console.log(response.data);
+              resultBox.style.color = 'blue';
+              resultBox.textContent = `${response.data.name}님 회원가입을 축하드립니다 !`;
+            })
+            .catch(function (error) {
+              console.log('Error', error);
+            });
+        }
+      </script>
+    </form>
+
+    <hr />
+    <h1>실습2. axios post 로그인</h1>
+
+    <br />
+    <form name="login">
+      아이디: <input type="text" name="ID" /> 비밀번호
+      <input type="text" name="PW" />
+      <button type="button" onclick="axiosPost();">로그인</button>
+      <div class="result2"></div>
+    </form>
+  </body>
+  <script>
+    const resultBox2 = document.querySelector('div.result2');
+
+    async function axiosPost() {
+      console.log('axiosPost 함수 호출!');
+      const form = document.forms['login'];
+      const data = {
+        ID: form.ID.value,
+        PW: form.PW.value,
+      };
+      try {
+        const response = await axios({
+          method: 'post',
+          url: '/axios',
+          data: data,
+        });
+
+        const tempId = 'blue';
+        const tempPw = '1234';
+
+        const { ID, PW } = response.data;
+        if (ID === tempId && PW === tempPw) {
+          resultBox2.style.color = 'blue';
+          resultBox2.textContent = `${ID}님 환영합니다 `;
+        } else {
+          resultBox2.style.color = 'red';
+          resultBox2.textContent = '아이디 혹은 비밀번호 오류입니다.';
+        }
+      } catch (error) {
+        console.log('err임다', error);
+      }
+    }
+  </script>
+</html>
