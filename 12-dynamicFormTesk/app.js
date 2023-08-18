@@ -22,7 +22,6 @@ app.get('/axios', (req, res) => {
 app.post('/axios', (req, res) => {
   console.log(req.body);
   res.send(req.body);
-  res.send;
 });
 app.listen(PORT, () => {
   console.log(`${PORT} is opening!`);

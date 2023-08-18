@@ -37,9 +37,9 @@
       </fieldset>
       <fieldset>
         <legend><label for="hobby">관심사</label></legend>
-        <input type="checkbox" name="travel" value="travel" />여행
-        <input type="checkbox" name="shopping" value="shopping" />쇼핑
-        <input type="checkbox" name="music" value="music" />음악
+        <input type="checkbox" name="hobby" value="travel" />여행
+        <input type="checkbox" name="hobby" value="shopping" />쇼핑
+        <input type="checkbox" name="hobby" value="music" />음악
       </fieldset>
       <button type="button" onclick="axiosGet();">제출</button>
       <div class="result"></div>
@@ -49,11 +49,18 @@
           console.log('get 함수 호출');
 
           const form = document.forms['register'];
+          console.log(form.hobby);
+
+          // 1. form.hobby 는 유사 배열 (반복 가능)
+          // 2. 각 반복에는 체크박스 인풋 요소의 checked 속성 값이 true인 것만 새로운 배열(hobbies)에 저장
+          const hobbies = [];
+            for
+
           const data = {
             name: form.name.value,
             gender: form.gender.value,
             birth: [form.birth.value, form.month.value, form.days.value],
-            hobby: [form.travel.value, form.shopping.value, form.music.value],
+            hobby: hobbies,
           };
 
           axios({
