@@ -49,12 +49,29 @@
           console.log('get 함수 호출');
 
           const form = document.forms['register'];
-          console.log(form.hobby);
+          const hobbies= [];// Create an array to store selected hobbies
+
+
+          // console.log(form.hobby);
+          for (let i = 0; i < form.hobby.length; i++) {
+            if(form.hobby[i].checked){
+            hobbies.push(form.hobby[i].value);
+            }else{
+              console.log("없어용");
+            }
+          }
+          
+          // for (let i = 0; i < form.hobby.length; i++) {
+          //   if(form.hobby[i].checked===true){
+          //     const hobbies = form.hobby[i];
+          //   }
+          // }
+
 
           // 1. form.hobby 는 유사 배열 (반복 가능)
           // 2. 각 반복에는 체크박스 인풋 요소의 checked 속성 값이 true인 것만 새로운 배열(hobbies)에 저장
-          const hobbies = [];
-            for
+          // const hobbies = [];
+            // for
 
           const data = {
             name: form.name.value,
@@ -124,5 +141,5 @@
         console.log('err임다', error);
       }
     }
-  </script>
-</html>
+    </script>
+    </html>
