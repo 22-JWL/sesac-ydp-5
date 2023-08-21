@@ -119,38 +119,6 @@
           name: form.name.value,
           gender: form.gender.value,
         };
-        
-        console.log(form.name.checkValidity());
-        console.log(form.gender[1].checkValidity());
-        console.log(form.gender[2].checkValidity());
-
-        try {
-          // 폼 유효성 검사
-          // name input에 입력된 값이 없다면, '이름을 입력해주세요!'
-          // gender radio btn을 선택하지 않았다면, '성별을 선택해주세요!'
-          // 둘 다 입력이 잘 되었다면, axios로 back에 요청 날리기
-
-          if (!form.name.checkValidity()) {
-            // !false
-            resultBox.textContent = '이름을 입력해주세요!';
-          } else if (!form.gender[0].checkValidity()) {
-            resultBox.textContent = '성별을 선택해주세요!';
-          } else {
-            const response = await axios({
-              method: 'get',
-              url: '/axios',
-              params: data,
-            }); // response: 서버의 응답 결과
-            const { name, gender } = response.data; // 객체 구조분해 할당
-            resultBox.textContent = `GET /axios 요청 완료!! ${name}님은 ${gender}이시죠?ㅎㅎ`;
-          }
-        } catch (error) {
-          resultBox.textContent = `알 수 없는 에러 발생! 다시 시도해주세요~`;
-          console.log('Error!', error);
-        }
-
-
-
 
         axios({
           method: 'get', //요청방식(= form method 속성)
