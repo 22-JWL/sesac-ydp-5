@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/static/index.css" />
   </head>
   <body>
-    <img src="<%= uploads%>" alt="" style="width: 300px" />
-    <br /><br />
-    <span>비밀번호 : <%= pw%></span><br />
-    <span>이름 : <%= name%></span><br />
-    <span>나이 : <%= age%></span><br />
+    <div class="card">
+      <img src="/<%= src %>" width="200" />
+      <h3><%= userInfo.userid%> 님 환영합니다!</h3>
+      <span>비밀번호 : <%=userInfo.password %></span><br />
+      <span>이름 : <%= userInfo.username%></span><br />
+      <span>나이 : <%= userInfo.age%></span><br />
+    </div>
   </body>
 </html>

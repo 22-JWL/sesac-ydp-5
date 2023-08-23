@@ -1,0 +1,20 @@
+body {
+  background-color: cadetblue;
+  height: 100vh;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+ul {
+  list-style: circle;
+  padding: 10vw;
+}
+
+.card {
+  text-align: center;
+  background-color: beige;
+  border-radius: 30px;
+  width: 400px;
+  padding: 40px 20px;
+}
