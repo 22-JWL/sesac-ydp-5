@@ -34,7 +34,7 @@ show tables;
 -- 3. 테이블 구조 확인
 -- 테이블의 컬럼 정보(자료형, NULL 여부, KEY, DEFAULT 등)
 
-desc customer;
+desc user;
 
 drop table customer;
 
@@ -49,7 +49,12 @@ INSERT INTO customer VALUES ('sadf', '이재훈', '미국 시카고', '010312351
 
 insert into customer values ('kiwi', '김키위', '대한민국 서울', '01012341234', '1990-03-17');
 insert into customer values ('apple', '이사과', '대한민국 포항', '01012344321', '1992-06-17');
-insert into orders values (NULL, 'kiwi', '프링글스', '3000', 5);
+
+INSERT INTO user (id, pw, name, gender, birthday, age) VALUES
+        ("widowmaker", "38ewifh3", "위도우", "F", "1976-06-27", 47),
+        ("dvadva", "k3f3ah", "송하나", "F", "2001-06-03", 22),
+        ("jungkrat", "4ifha7f", "정크랫", "M", "1999-11-11", 24);
+        
 insert into orders values (NULL, 'apple', '프링글스', '3000', 1);
 insert into orders values (NULL, 'kiwi', '홈런볼', '2000', 3);
 
@@ -67,7 +72,7 @@ delete from customer where custid = 'apple';
 
 -- SELECT 조회
 SELECT * FROM customer;
-SELECT * FROM orders;
+SELECT * FROM user;
 
 truncate table customer;
 truncate table orders;
@@ -114,7 +119,7 @@ INSERT INTO orders VALUES(NULL, 'jjjeee', '바나나킥', 2000, 4);
 INSERT INTO orders VALUES(NULL, 'imminji01', '초코파이', 5000, 2);
 
 -- 모든 고객의 아이디를 검색
-select custid FROM customer;
+select birthday FROM user;
 
 -- 모든 고객의 아이디, 생년월일 검색(순서 O)
 select birth, custid from customer;
@@ -128,6 +133,8 @@ select * from customer;
 select addr from customer;
 
 select DISTINCT add FROM comtomer;
+
+SELECT * FROM USER ORDER BY BIRTHDAY ASC;
 
 
 select* from customer;
@@ -223,3 +230,27 @@ select*from customer where addr like '대한민국%' and birth >= '2000-01-01';
 select*from customer where addr like '미국%' or addr like '영국%';
 -- 휴대폰 번호 마지막 자리가 4가 아닌 고객 검색`
 select*from customer where phone not like '%_4' ;
+
+
+
+
+-- 실습.SELECT문
+SELECT * FROM USER;
+
+SELECT * FROM USER ORDER BY birthday ASC;
+SELECT * FROM USER WHERE gender = 'M' ORDER BY NAME DESC;
+
+
+SELECT id, name FROM user WHERE birthday LIKE '199%';
+
+SELECT * FROM user WHERE birthday LIKE '%_06_%' ORDER BY birthday ASC;
+
+SELECT * FROM user WHERE gender = 'M' AND birthday LIKE '197%';
+
+SELECT *FROM user ORDER BY age DESC LIMIT 3;
+
+SELECT * FROM user WHERE age BETWEEN 25 AND 50;
+
+UPDATE user SET pw = '12345678' WHERE id = 'hong1234';
+
+DELETE FROM user WHERE id = 'jungkrat';

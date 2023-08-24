@@ -8,12 +8,12 @@
 
 -- [Database 관련 명령어]
 -- 1. Database 생성
-create database sesac default character set utf8 collate utf8_general_ci;
+create database sesac_14_tesk default character set utf8 collate utf8_general_ci;
 
 -- 2. Database 목록 조회
 show databases;
 -- 3. Database 사용 선언
-use sesac;
+use sesac_14_tesk;
 -- 4.Database 삭제alter
 drop database sesac;
 
@@ -26,11 +26,13 @@ drop database sesac;
 -- PRIMARY KEY : 기본키 (중복값 허용 x, NULL 허용 X, 하나의 테이블당 하나)
 -- DEFAULT 기본값 : 특정 속성의 기본 값 설정
 -- UNIQUE: 중복 허용X BUT NULL허용 하나의 테이블당 여러개 가능!!
-create table product (
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    model_number VARCHAR(15) NOT NULL,
-    series VARCHAR(30) NOT NULL
+CREATE TABLE user (
+	id VARCHAR(10) PRIMARY KEY NOT NULL,
+    pw VARCHAR(20) NOT NULL,
+    name VARCHAR(5) NOT NULL,
+    gender enum('F', 'M', '' ) default '',
+    birthday DATE not null,
+    age int(3) not null DEFAULT 0
 );
 -- 2. 테이블 목록 확인
 -- 현재 사용중인 데이터베이스의 모든 테이블 조회alter
@@ -39,11 +41,11 @@ show tables;
 -- 3. 테이블 구조 확인
 -- 테이블의 컬럼 정보(자료형, NULL 여부, KEY, DEFAULT 등)
 
-desc product;
+desc user;
 
 -- 4.테이블 삭제
 -- drop : 테이블 존재 자체를 없앰alter
-drop table product;
+DROP TABLE member;
 -- trancate : 테이블 구조만 남겨놓고 모든 행 삭제
 truncate table product;
 
@@ -52,12 +54,12 @@ truncate table product;
 -- 컬럼 정보가 바뀌어야 하는 경우 사용
 
 -- 5-1. 컬럼 추가
-alter table product add new_column date;
+ALTER TABLE member ADD interest VARCHAR(100);
 
 -- 5-2. 컬럼 수정
-alter table product modify new_column int;
+ALTER TABLE member MODIFY gender varchar(2) NOT NULL;
 alter table product change new_column new_column2 int; -- 컬럼명 변경
 
 
 -- 5-2. 컬럼 삭제
-alter table product drop new_column2;
+ALTER TABLE member DROP age;
