@@ -17,13 +17,27 @@ CREATE TABLE customer (
 -- on delete cascade: 기준 테이블의 데이터가 삭제되면 참조 테이블의 데이터도 삭제
 
 
+CREATE TABLE authors (
+	author_id INT PRIMARY KEY NOT NULL,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(50)
+);
+
+CREATE TABLE books (
+	book_id INT PRIMARY KEY NOT NULL,
+    title VARCHAR(100),
+    author_id INT,
+    publication_date DATE,
+    FOREIGN KEY (author_id) REFERENCES authors(author_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 CREATE TABLE orders (
-	orderid int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    custid CHAR(10) NOT NULL, -- FK
-    prodname CHAR(6) NOT NULL,
-    price INT NOT NULL,
-    amount SMALLINT NOT NULL,
-    FOREIGN KEY (custid) REFERENCES customer(custid) ON UPDATE CASCADE ON DELETE CASCADE
+	order_id INT PRIMARY KEY,
+    book_id INT,
+    customer_name VARCHAR(50),
+    order_date DATE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- 2. 테이블 목록 확인
@@ -34,9 +48,9 @@ show tables;
 -- 3. 테이블 구조 확인
 -- 테이블의 컬럼 정보(자료형, NULL 여부, KEY, DEFAULT 등)
 
-desc user;
+desc authors;
 
-drop table customer;
+drop table orders;
 
 -- INSERT 추가
 
@@ -265,6 +279,7 @@ DELETE FROM user WHERE id = 'jungkrat';
 -- 계산하여 어떤 값을 리턴하는 "함수"
 -- group by 절과 함께 쓰이는 케이스가 많음
 use orders;
+SELECT * FROM orders;
 
 -- 주문 테이블에서 총 판매 개수 검색
 select sum(amount) from orders;
@@ -294,7 +309,17 @@ select count(distinct custid;
 
 -- 고객별 주문 건수 구하기
 
-select custid, count(*) from orders group by custid
+select custid, count(*) from orders group by custid;
 
+SELECT * FROM orders;
+select custid, sum(amount) from orders group by custid;
 
-select custid, sum(amount) from orders group by cust id
+select custid, sum(price*amount) from orders group by custid;
+
+-- 상품별 판매 개수 
+select prodname, sum(amount) from orders group by prodname;
+
+-- 총 주문액이 10000원 이상인 고객에 대해서 고객별로 주문한 상품 통 수량 구하기
+select custid, sum(amount) from orders group by custid having sum(price * amount) >= 10000;
+
+select custid, sum(amount) from orders group by custid having sum(price * amount) >= 10000;

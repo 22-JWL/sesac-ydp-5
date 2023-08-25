@@ -13,7 +13,7 @@ create database sesac_14_tesk default character set utf8 collate utf8_general_ci
 -- 2. Database 목록 조회
 show databases;
 -- 3. Database 사용 선언
-use sesac;
+use sesac_14_tesk;
 -- 4.Database 삭제alter
 drop database sesac;
 
@@ -26,13 +26,11 @@ drop database sesac;
 -- PRIMARY KEY : 기본키 (중복값 허용 x, NULL 허용 X, 하나의 테이블당 하나)
 -- DEFAULT 기본값 : 특정 속성의 기본 값 설정
 -- UNIQUE: 중복 허용X BUT NULL허용 하나의 테이블당 여러개 가능!!
-CREATE TABLE user (
-	id VARCHAR(10) PRIMARY KEY NOT NULL,
-    pw VARCHAR(20) NOT NULL,
-    name VARCHAR(5) NOT NULL,
-    gender enum('F', 'M', '' ) default '',
-    birthday DATE not null,
-    age int(3) not null DEFAULT 0
+CREATE TABLE orders(
+	order_id INT PRIMARY KEY NOT NULL,
+    book_id INT,
+    customer_name VARCHAR(50),
+    order_date date
 );
 -- 2. 테이블 목록 확인
 -- 현재 사용중인 데이터베이스의 모든 테이블 조회alter
@@ -41,7 +39,7 @@ show tables;
 -- 3. 테이블 구조 확인
 -- 테이블의 컬럼 정보(자료형, NULL 여부, KEY, DEFAULT 등)
 
-desc user;
+desc books;
 
 -- 4.테이블 삭제
 -- drop : 테이블 존재 자체를 없앰alter
