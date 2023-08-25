@@ -13,7 +13,7 @@ create database sesac_14_tesk default character set utf8 collate utf8_general_ci
 -- 2. Database 목록 조회
 show databases;
 -- 3. Database 사용 선언
-use sesac_14_tesk;
+use sesac;
 -- 4.Database 삭제alter
 drop database sesac;
 

@@ -137,7 +137,10 @@ select DISTINCT add FROM comtomer;
 SELECT * FROM USER ORDER BY BIRTHDAY ASC;
 
 
-select* from customer;
+select* from customer order by custname DESC;
+
+
+SELECT * FROM customer WHERE birth >= '2000-01-01' ORDER BY addr, custid desc;
 
 -- < WHERE 조건 >
 -- 비교: =, <>, <, <=, >, >=
@@ -235,7 +238,7 @@ select*from customer where phone not like '%_4' ;
 
 
 -- 실습.SELECT문
-SELECT * FROM USER;
+SELECT * FROM orders;
 
 SELECT * FROM USER ORDER BY birthday ASC;
 SELECT * FROM USER WHERE gender = 'M' ORDER BY NAME DESC;
@@ -254,3 +257,44 @@ SELECT * FROM user WHERE age BETWEEN 25 AND 50;
 UPDATE user SET pw = '12345678' WHERE id = 'hong1234';
 
 DELETE FROM user WHERE id = 'jungkrat';
+
+
+
+
+-- <집계 함수>
+-- 계산하여 어떤 값을 리턴하는 "함수"
+-- group by 절과 함께 쓰이는 케이스가 많음
+use orders;
+
+-- 주문 테이블에서 총 판매 개수 검색
+select sum(amount) from orders;
+
+-- 주문 테이블에서 총 판매 개수 검색 + 의미있는 열이름으로 변경
+select sum(amount) as 'total_amount' from orders;
+
+-- 주문 테이블에서 총 판매 개수, 평균 판매 개수, 상품 최저가, 상품 최고가 검색
+SELECT 
+    SUM(amount) AS 'total_sum',
+    AVG(amount) AS 'total_avg',
+	MIN(price) AS 'total_min',
+    MAX(price) AS  'total_max_price' 
+	FROM orders;
+    
+-- 
+
+    
+-- 주문 테이블에서 총 주문 건수 (= 튜플 개수)
+select count(*) from orders;
+
+
+-- 주문 테이블에서 주문한 고객 수(중복 없이)
+select count(distinct custid;
+
+-- 고객별로 주문한 고객 수(중복 없이)
+
+-- 고객별 주문 건수 구하기
+
+select custid, count(*) from orders group by custid
+
+
+select custid, sum(amount) from orders group by cust id
