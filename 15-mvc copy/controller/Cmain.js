@@ -25,8 +25,10 @@
 //     comment: '첫 댓글입니당ㅎㅎ',
 //   },
 // ];
+//model 화살표
 const Comment = require('../model/Comment');
 
+//viwe 에 가있는 홧살표
 exports.main = (req, res) => {
   res.render('index');
 };
