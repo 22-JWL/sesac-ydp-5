@@ -26,7 +26,7 @@ function createVisitor() {
       <td>${id}</td>
       <td>${name}</td>
       <td>${comment}</td>
-      <td><button type="button">수정</button></td>
+      <td><button type="button" onclick="editVisitor(${id})">수정</button></td>
       <td><button type="button" onclick="deleteVisitor(this, ${id}})">삭제</button></td>
     </tr>
 `;
@@ -55,5 +55,20 @@ function deleteVisitor(obj, id) {
   }).then((res) => {
     console.log('delete /visitor 요청에 대한 응답', res.data);
   });
+}
+
+function editVisitor(id) {
+  console.log(id, ' 번 방명록 수정!!');
+
+  //TODO:
+  //1. id를 가지고 방명록 하나를 조회-> input에 각각 value로 저장
+  axios({
+    method: 'get',
+    url: '/visitor',
+    params: {
+      id: id,
+    },
+  });
+  //2. [변경], [취소] 버튼 보이기
 }
 //res: id, name, comment

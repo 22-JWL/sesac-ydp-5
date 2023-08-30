@@ -2,7 +2,7 @@
 create database sesac_16_mvc character set utf8mb4 collate utf8mb4_unicode_ci;
 drop database sesac_16_mvc;
 show databases;
-use sesac_16_mvc;
+use sesac;
 
 CREATE TABLE visitor(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -11,14 +11,14 @@ CREATE TABLE visitor(
 );
 drop table visitor;
 
-insert into visitor values (1, '철수', '차가워 졌다');
+insert into visitor values (null, '철수', '차가워 졌다');
 insert into visitor values (2, '영희', '머리를 찼다');
 desc visitor;
 
-select * from visitor;
+select * from visitor order by ID;
 
 
--- ethan 이라는 새로운 계정(mysql 접속 가능한 계정) 생성
+-- user 이라는 새로운 계정(mysql 접속 가능한 계정) 생성
 create user 'user'@'%' IDENTIFIED BY '1234';
 
 GRANT ALL PRIVILEGES ON *.* TO 'user'@'%' WITH GRANT OPTION;
@@ -29,8 +29,8 @@ ALTER USER 'user'@'%' IDENTIFIED WITH mysql_native_password BY '1234';
 
 grant all privileges on *.* to 'user'@'%' with grant option;
 
-show database;
-select *from mysql.user
+show databases;
+select *from mysql.user;
 
 
 
