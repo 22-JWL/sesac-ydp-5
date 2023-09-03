@@ -4,8 +4,12 @@ const app = express();
 const PORT = 8000;
 const path = require('path'); //path를 import한다
 
+
+
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); //폴더, 폴더경로 지정
+
 
 // 미들웨어 등록
 // app.use(cookieParser()); // 일반 쿠키
