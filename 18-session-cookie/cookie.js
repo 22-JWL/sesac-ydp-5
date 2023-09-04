@@ -25,6 +25,9 @@ const myCookieConf = {
 
 app.get('/', (req, res) => {
   res.render('cookie');
+  console.log('req.cookies.popup >> ', req.cookies.popup);
+  res.render('index', { popup: req.cookies.popup });
+  //req.cookies.popup >>  undefined
 });
 
 app.get('/setCookie', (req, res) => {
