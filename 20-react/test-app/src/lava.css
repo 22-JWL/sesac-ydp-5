@@ -1,0 +1,80 @@
+/* body를 기준으로 위치를 잡을 수 있도록 할 것이다. */
+div {
+  width: 100px;
+  height: 100px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 100px;
+  position: absolute;
+}
+
+/* z-index:겹치는 요소에 대한 순서를 결정
+- 숫자값: 양수, 0, 음수
+- 숫자값이 클수록 더 위에 쌓임 (가장 앞에 놓인다)*/
+.body1 {
+  border-radius: 50%;
+  top: 100px;
+  left: 100px;
+  background-color: red;
+}
+
+.eye-white {
+  background-color: white;
+  border-radius: 50%;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  z-index: 20;
+}
+.eye-black {
+  background-color: black;
+  border-radius: 50%;
+  top: 10px;
+  left: 1px;
+  width: 20px;
+  height: 20px;
+  z-index: 20;
+}
+
+.body2 {
+  border-radius: 50%;
+
+  top: 140px;
+  left: 180px;
+  background-color: orange;
+  z-index: 1;
+}
+
+.body3 {
+  border-radius: 50%;
+
+  top: 180px;
+  left: 220px;
+  background-color: yellow;
+  z-index: 10;
+}
+
+.body4 {
+  border-radius: 50%;
+
+  top: 180px;
+  left: 300px;
+  background-color: green;
+  z-index: 11;
+}
+
+.body5 {
+  border-radius: 50%;
+
+  top: 180px;
+  left: 360px;
+  background-color: blue;
+  z-index: 13;
+}
+.grass {
+  top: 200px;
+  left: 10px;
+  z-index: 12;
+  position: absolute;
+}
