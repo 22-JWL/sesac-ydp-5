@@ -1,3 +1,5 @@
+import LifeCycleClass from './LifeCycleClass';
+
 import RefSample2 from './RefSample';
 import RefSample3 from './RefSample3';
 
@@ -8,6 +10,7 @@ function App() {
 
       {/* 클래스형 컴포넌트; ref 사용방법 1. 콜백함수 */}
       <RefSample3 />
+      <LifeCycleClass />
     </div>
   );
 }
