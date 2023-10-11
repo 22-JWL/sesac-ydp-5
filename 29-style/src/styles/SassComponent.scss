@@ -8,11 +8,8 @@
 // $animation-duration: 0.4s;
 
 // - 믹스인(함수) 선언
-// @import './utils.scss';
-@mixin box($size) {
-  width: $size;
-  height: $size;
-}
+@import './utils.scss';
+
 // - 중첩: 부모 자식 표현 가능
 .container {
   display: flex;

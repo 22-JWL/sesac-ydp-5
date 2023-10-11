@@ -1,0 +1,73 @@
+$color-first: red;
+$color-second: blue;
+$color-third: green;
+$color-fourth: yellow;
+$color-fifth: magenta;
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.larva {
+  display: flex;
+
+  .circle {
+    @include circle(150px);
+
+    &.b1 {
+      background-color: $color-first;
+      z-index: 4;
+      top: 700px;
+      left: 40px;
+    }
+    &.b2 {
+      background-color: $color-second;
+      z-index: 5;
+      top: 750px;
+      left: 140px;
+    }
+    &.b3 {
+      background-color: $color-third;
+      z-index: 6;
+      top: 760px;
+      left: 240px;
+    }
+    &.b4 {
+      background-color: $color-fourth;
+      z-index: 7;
+      top: 760px;
+      left: 340px;
+    }
+    &.b5 {
+      background-color: $color-fifth;
+      z-index: 8;
+      top: 750px;
+      left: 440px;
+    }
+  }
+  .eyewhite {
+    @include circle(50px);
+    background-color: white;
+    z-index: 5;
+    top: 720px;
+    left: 60px;
+  }
+  .eyeblack {
+    @include circle(30px);
+    background-color: black;
+    z-index: 6;
+    top: 730px;
+    left: 61px;
+  }
+}
+
+.grass {
+  border: 1px;
+  position: absolute;
+  top: 800px;
+  left: 40px;
+  width: 1000px;
+}
