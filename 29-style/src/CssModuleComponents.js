@@ -9,7 +9,7 @@ export default function CssModuleComponents() {
     <div className={styles.container}>
       <div className={[styles.box, styles.red].join(' ')}></div>
       <div className={[styles.box, styles.yellow].join(' ')}></div>
-      <div className={[styles.box, styles.green].join(' ')}></div>
+      <div className={`${styles.box}, ${styles.green}`}></div>
     </div>
   );
 }
