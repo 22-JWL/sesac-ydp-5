@@ -17,6 +17,7 @@ export const Box3Container = () => {
 export const Box4Container = () => {
   const number = useSelector((state) => state.counter.number);
   const dispatch = useDispatch();
+  //   dispatch ( { type:, payload: })
   return (
     <Box4
       //prop으로 내리는 코드들임

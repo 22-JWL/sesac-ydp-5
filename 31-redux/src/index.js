@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App4 from './App4';
+// import App5 from './Bank';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
 //크롬 확장프로그램 import
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './store';
+import Bank from './Bank';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -33,7 +34,7 @@ const store = configureStore({ reducer: rootReducer }, composeWithDevTools());
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App4 />
+      <Bank />
     </Provider>
   </React.StrictMode>
 );
