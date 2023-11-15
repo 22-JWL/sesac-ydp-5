@@ -168,7 +168,7 @@
       //     ).textContent = `${data.who} : ${data.msg}`;
       //   });
 
-      //   [실습 3] 채팅창 입장문구
+      //[실습 3] 채팅창 입장문구
       socket.on('notice', (msg) => {
         console.count(msg);
         document
@@ -212,6 +212,16 @@
         }
         document.querySelector('#nick-list').innerHTML = options;
       });
+
+      //   [실습 4] 채팅창 메시지 전송 Step1
+      function send() {
+        //send 이벤트 전송 {닉네임, 입력창내용}
+        socket.emit('text', document.querySelector('.my-chat'));
+      }
+
+      // 모두에게 newMessage 이벤트로 {닉네임, 입력창 내용 데이터 전송}
+      // 내가 보낸 메세지 : 오른쪽
+      //다른 사람이 보낸 메세지: 왼쪽
     </script>
   </body>
 </html>
