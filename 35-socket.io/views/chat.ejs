@@ -16,7 +16,7 @@
       .chat-box {
         background-color: rgb(135, 149, 189);
         max-width: 600px;
-        margin: 20px auto;
+        /* margin: 20px auto; */
         border: 1px solid #ccc;
         border-radius: 10px;
         /* 박스에서 넘치는건 다 숨김 */
@@ -106,6 +106,10 @@
       .notice {
         text-align: center;
       }
+
+      .d-none {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -128,7 +132,7 @@
       />
       <button type="button" onclick="join();">입장</button>
     </div>
-    <main class="chat-box">
+    <main class="chat-box d-none">
       <div class="chat-list">
         <div class="my-chat">
           <div>user1: msg1</div>
@@ -172,9 +176,23 @@
         socket.emit('setNick', document.querySelector('#nickname').value);
       }
 
+      //[실습 3-2] 채팅창 입장문구 socket.id->nickname
+      //닉네임 중복 alert
+      socket.on('error', (data) => {
+        alert(data);
+      });
+
       //   setInterval(() => {
       //     location.reload();
       //   }, 5000);
+
+      //[실습 3-2] 채팅창 입장문구 socket.id->nickname
+      //입장 성공 : 닉네임 입력창 비활성화
+      socket.on('entrySuccess', (nick) => {
+        document.querySelector('#nickname').disabled = true; //인풋 비활성화
+        document.querySelector('.entry-box > button').disabled = true; //버튼 비활성화
+        document.querySelector('.chat-box').classList.remove('d-none'); //채팅창 보이기
+      });
     </script>
   </body>
 </html>
