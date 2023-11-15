@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>socket.io 채팅</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 채팅 박스 스타일 설정 */
+      .chat-box {
+        background-color: rgb(135, 149, 189);
+        max-width: 600px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        /* 박스에서 넘치는건 다 숨김 */
+        overflow: hidden;
+      }
+
+      /* 채팅 리스트 스타일 설정 */
+      .chat-list {
+        padding: 10px;
+        overflow-y: scroll;
+        max-height: 400px;
+      }
+
+      /* 나의 채팅 스타일 설정 */
+      .my-chat {
+        margin-bottom: 10px;
+        text-align: right;
+      }
+
+      .my-chat div {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 8px;
+        border-radius: 5px;
+        display: inline-block;
+        max-width: 80%;
+      }
+
+      /* 상대방 채팅 스타일 설정 */
+      .other-chat {
+        margin-bottom: 10px;
+      }
+
+      .other-chat div {
+        background-color: #f1f0f0;
+        color: #333;
+        padding: 8px;
+        border-radius: 5px;
+        display: inline-block;
+        max-width: 80%;
+      }
+
+      /* 스크롤바 스타일 설정 */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+      }
+
+      /* 인풋 스타일 설정 */
+      /* 입력 상자와 버튼 CSS */
+
+      .input-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ddd;
+      }
+
+      .input-box input {
+        flex: 1;
+        padding: 8px;
+        margin-right: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .input-box button {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* [실습3] */
+      .notice {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My chat</h1>
+
+    <!-- [실습 1] 각버튼 누를 때마다 메세지 보내기 -->
+    <!-- <button onclick="sayHello()">Hello</button>
+        <button onclick="sayStudy()">Study</button>
+        <button onclick="sayBye()">Bye</button>
+        <p id="form-server"></p> -->
+
+    <!-- [실습 2] 채팅 UI -->
+    <div class="entry-box">
+      <input
+        type="text"
+        id="nickname"
+        placeholder="닉네임"
+        autofocus
+        onkeypress="if(window.event.keyCode==13){join()}"
+      />
+      <button type="button" onclick="join();">입장</button>
+    </div>
+    <main class="chat-box">
+      <div class="chat-list">
+        <div class="my-chat">
+          <div>user1: msg1</div>
+        </div>
+        <div class="other-chat">
+          <div>user2: msg2</div>
+        </div>
+      </div>
+      <div class="input-box">
+        <input type="text" />
+        <button onclick="">전송</button>
+      </div>
+    </main>
+
+    <script>
+      let socket = io.connect(); //소켓 사용을 위한 객체 생성
+      socket.on('connect', () => {
+        console.log('클라이언트 연결 완료 :: ', socket.id);
+      });
+      //   [실습 1] 각버튼 누를 때마다 메세지 보내기
+      //   function sayHello() {
+      //     socket.emit('hello', { who: 'client', msg: 'hello' });
+      //   }
+      //   socket.on('helloKr', (data) => {
+      //     console.count(data);
+      //     document.querySelector(
+      //       '#form-server'
+      //     ).textContent = `${data.who} : ${data.msg}`;
+      //   });
+
+      //   [실습 3] 채팅창 입장문구
+      socket.on('notice', (msg) => {
+        console.count(msg);
+        document
+          .querySelector('.chat-list')
+          .insertAdjacentHTML('beforeend', `<div class ="notice">${msg}</div>`);
+      });
+
+      //[실습 3-2] 채팅창 입장문구 socket.id->nickname
+      function join() {
+        socket.emit('setNick', document.querySelector('#nickname').value);
+      }
+
+      //   setInterval(() => {
+      //     location.reload();
+      //   }, 5000);
+    </script>
+  </body>
+</html>
