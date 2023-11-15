@@ -76,8 +76,11 @@ io.on('connection', (socket) => {
 
   // [실습4] 채팅창 메세지 전송 Step 1
   // send 이벤트를 받아서
-  socket.on('text', () => {});
   // 모두에게 newMessage 이벤트로 {닉네임, 입력창 내용 데이터 전송}
+  socket.on('send', (data) => {
+    console.log(data);
+    io.emit('sendMsg', data);
+  });
 });
 
 server.listen(PORT, () => {
