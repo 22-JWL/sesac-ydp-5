@@ -141,10 +141,15 @@
           <div>user2: msg2</div>
         </div>
       </div>
-      <div class="input-box">
-        <input type="text" />
-        <button onclick="">전송</button>
-      </div>
+      <!-- 메세지 전송 영역 -->
+      <select id="nick-list"></select
+      >에게
+      <input
+        type="text"
+        id="message"
+        onkeypress="if(window.event.keyCode==13){send()}"
+      />
+      <button type="button" onclick="send();">전송</button>
     </main>
 
     <script>
@@ -189,9 +194,23 @@
       //[실습 3-2] 채팅창 입장문구 socket.id->nickname
       //입장 성공 : 닉네임 입력창 비활성화
       socket.on('entrySuccess', (nick) => {
+        myNick = nick; //내 닉네임 저장
         document.querySelector('#nickname').disabled = true; //인풋 비활성화
         document.querySelector('.entry-box > button').disabled = true; //버튼 비활성화
         document.querySelector('.chat-box').classList.remove('d-none'); //채팅창 보이기
+      });
+
+      //[실습 3-2] 채팅창 입장문구 socket.id->nickname
+      //유저 목록 업데이트(select 밗스의 option 태그 개수 변경)
+      socket.on('updateNicks', (nickObjs) => {
+        // nickObjs: {socket.id: nick1, socket.id: nick2, ...}
+        let options = `<option value="all">전체<option>`;
+        //TODO : nickObjs 반복 돌아서 option태그 추가
+        //option태그의 value 속성 값은 socket.id, option 태그의 컨텐츠는 nick 값
+        for (let key in nickObjs) {
+          options += `<option value ="${key}">${nickObjs[key]}</option>`;
+        }
+        document.querySelector('#nick-list').innerHTML = options;
       });
     </script>
   </body>

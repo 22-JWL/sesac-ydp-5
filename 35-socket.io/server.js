@@ -7,9 +7,7 @@ const server = http.createServer(app);
 const io = socketIO(server); //socket.io를 서버에 연결
 const PORT = 8080;
 
-const nickArray = {}; //{socket.id :nick1, socket.id:nick2, ...}
-
-const nickObjs = {};
+const nickObjs = {}; //{socket.id :nick1, socket.id:nick2, ...}
 
 app.set('view engine', 'ejs');
 
@@ -53,6 +51,7 @@ io.on('connection', (socket) => {
       console.log('접속 유자 목록::', nickObjs);
       io.emit('notice', `${nick}님이 입장하셨습니다.`); //전체 공지
       socket.emit('entrySuccess', nick); //해당 소켓 데이터 전송
+      io.emit('updateNicks', nickObjs); //전체사용자 닉네임 모음 객체 전달
     }
   });
 });
